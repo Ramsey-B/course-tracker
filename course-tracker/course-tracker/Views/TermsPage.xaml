@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="course_tracker.Views.TermsPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddTerm_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadTermsCommand}">
+        <CollectionView x:Name="TermsView"
+                ItemsSource="{Binding Terms}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame OutlineColor="Red" Padding="2" Margin="0,5,0,5">
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding Title}" 
+                                    d:Text="{Binding .}"
+                                    LineBreakMode="NoWrap"
+                                    FontSize="16" />
+                                <Label Text="Current" IsVisible="{Binding IsCurrent}"></Label>
+                            </StackLayout>
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Start, StringFormat='{0:MM/dd/yyyy}'}" />
+                                        <Span Text=" - " />
+                                        <Span Text="{Binding End}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnTermSelected"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>

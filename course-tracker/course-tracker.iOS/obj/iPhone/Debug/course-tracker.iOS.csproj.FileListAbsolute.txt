@@ -1,0 +1,8 @@
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\ibtool\_BundleResourceWithLogicalName.items
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\actool\_PartialAppManifest.items
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\actool\_BundleResourceWithLogicalName.items
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\coremlc\_PartialAppManifest.items
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\coremlc\_BundleResourceWithLogicalName.items
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\optimized\
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\course-tracker.iOS.csprojAssemblyReference.cache
+C:\Users\ramse\source\repos\course-tracker\course-tracker\course-tracker.iOS\obj\iPhone\Debug\course-tracker.iOS.csproj.CoreCompileInputs.cache

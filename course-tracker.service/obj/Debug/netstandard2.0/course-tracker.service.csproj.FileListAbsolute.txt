@@ -1,0 +1,12 @@
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\bin\Debug\netstandard2.0\course-tracker.service.deps.json
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\bin\Debug\netstandard2.0\course-tracker.service.dll
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\bin\Debug\netstandard2.0\course-tracker.service.pdb
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\bin\Debug\netstandard2.0\course-tracker.models.dll
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\bin\Debug\netstandard2.0\course-tracker.models.pdb
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.csprojAssemblyReference.cache
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.csproj.CoreCompileInputs.cache
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.AssemblyInfoInputs.cache
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.AssemblyInfo.cs
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.csproj.CopyComplete
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.dll
+C:\Users\ramse\source\repos\course-tracker\course-tracker.service\obj\Debug\netstandard2.0\course-tracker.service.pdb
