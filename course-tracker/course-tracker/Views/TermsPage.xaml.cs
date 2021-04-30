@@ -29,7 +29,7 @@ namespace course_tracker.Views
 
         async void AddTerm_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+            await Navigation.PushModalAsync(new NavigationPage(new NewTermPage()));
         }
 
         protected override void OnAppearing()

@@ -18,23 +18,23 @@ namespace course_tracker.ViewModels
         {
             Title = "Terms";
             Terms = new ObservableCollection<Term>();
-            LoadTermsCommand = new Command(() => LoadTerms());
+            LoadTermsCommand = new Command(async () => await LoadTerms());
 
-            MessagingCenter.Subscribe<NewItemPage, Term>(this, "AddTerm", (obj, term) =>
+            MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", async (obj, term) =>
             {
                 var newTerm = term as Term;
-                TermService.AddTerm(newTerm);
-                LoadTerms();
+                await TermRepository.AddTermAsync(newTerm);
+                await LoadTerms();
             });
         }
 
-        void LoadTerms()
+        async Task LoadTerms()
         {
             IsBusy = true;
             try
             {
                 Terms.Clear();
-                var terms = TermService.GetTerms();
+                var terms = await TermRepository.GetTermsAsync();
                 foreach (var term in terms)
                 {
                     Terms.Add(term);

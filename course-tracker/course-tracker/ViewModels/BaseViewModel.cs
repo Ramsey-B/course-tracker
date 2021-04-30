@@ -1,4 +1,5 @@
 ﻿using course_tracker.Services;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +10,10 @@ namespace course_tracker.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public TermRepository TermService => DependencyService.Get<TermRepository>();
+        private static SQLiteAsyncConnection _sqlConn => DependencyService.Get<SQLiteAsyncConnection>();
+        public TermRepository TermRepository => new TermRepository(_sqlConn);
+        public CourseRepository CourseRepository => new CourseRepository(_sqlConn);
+        public AssessmentRepository AssessmentRepository => new AssessmentRepository(_sqlConn);
 
         bool isBusy = false;
         public bool IsBusy

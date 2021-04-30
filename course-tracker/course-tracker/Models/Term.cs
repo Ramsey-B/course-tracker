@@ -1,16 +1,21 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 
 namespace course_tracker.Models
 {
+    [Table("Terms")]
     public class Term
     {
-        public string Id { get; set; }
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public int Id { get; set; }
+        [NotNull]
         public string Title { get; set; }
+        [NotNull]
         public DateTime Start { get; set; }
+        [NotNull]
         public DateTime End { get; set; }
-        public bool NotifcationsOn { get; set; } = false;
-        public List<Course> Courses { get; set; }
+        [Ignore]
         public bool IsCurrent => Start <= DateTime.UtcNow && End > DateTime.UtcNow;
     }
 }

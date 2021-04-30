@@ -1,15 +1,24 @@
-﻿using System;
+﻿using SQLite;
+using System;
 
 namespace course_tracker.Models
 {
+    [Table("Assessments")]
     public class Assessment
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public AssessmentType Type { get; set; }
-        public bool NotifcationsOn { get; set; } = false;
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public int Id { get; set; }
+        [NotNull]
+        public int CourseId { get; set; }
+        [NotNull]
+        public string Title { get; set; }
+        [NotNull]
         public DateTime Start { get; set; }
+        [NotNull]
         public DateTime End { get; set; }
+        [NotNull]
+        public AssessmentType Type { get; set; }
+        public bool NotificationEnabled { get; set; }
     }
 
     public enum AssessmentType

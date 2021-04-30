@@ -12,8 +12,7 @@
     </ContentPage.ToolbarItems>
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadTermsCommand}">
-        <CollectionView x:Name="TermsView"
-                ItemsSource="{Binding Terms}">
+        <CollectionView x:Name="TermsView" ItemsSource="{Binding Terms}">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <Frame OutlineColor="Red" Padding="2" Margin="0,5,0,5">
@@ -23,14 +22,16 @@
                                     d:Text="{Binding .}"
                                     LineBreakMode="NoWrap"
                                     FontSize="16" />
-                                <Label Text="Current" IsVisible="{Binding IsCurrent}"></Label>
+                                <Frame IsVisible="{Binding IsCurrent}" Padding="2" BackgroundColor="Green">
+                                    <Label TextColor="White" Text=" Current "></Label>
+                                </Frame>
                             </StackLayout>
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <Span Text="{Binding Start, StringFormat='{0:MM/dd/yyyy}'}" />
                                         <Span Text=" - " />
-                                        <Span Text="{Binding End}" />
+                                        <Span Text="{Binding End, StringFormat='{0:MM/dd/yyyy}'}" />
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>

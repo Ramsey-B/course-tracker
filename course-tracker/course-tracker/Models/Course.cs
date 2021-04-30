@@ -1,20 +1,30 @@
-﻿using System;
+﻿using SQLite;
+using System;
 using System.Collections.Generic;
 
 namespace course_tracker.Models
 {
+    [Table("Courses")]
     public class Course
     {
-        public string Id { get; set; }
-        public string Name { get; set; }
-        public DateTime Start { get; set; }
-        public DateTime End { get; set; }
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public int Id { get; set; }
+        [NotNull]
+        public int TermId { get; set; }
+        [NotNull]
+        public string Title { get; set; }
+        [NotNull]
         public CourseStatus Status { get; set; }
-        public Assessment ObjectiveAssessment { get; set; }
-        public Assessment PerformanceAssessment { get; set; }
-        public Instructor Instructor { get; set; }
-        public List<string> Notes { get; set; } = new List<string>();
-        public bool NotifcationsOn { get; set; } = false;
+        [NotNull]
+        public DateTime Start { get; set; }
+        [NotNull]
+        public DateTime End { get; set; }
+        [NotNull]
+        public string InstructorName { get; set; }
+        public string InstructorPhone { get; set; }
+        public string InstructorEmail { get; set; }
+        public string Notes { get; set; }
+        public bool NotificationEnabled { get; set; }
     }
 
     public enum CourseStatus

@@ -1,78 +1,60 @@
 ﻿using course_tracker.Models;
-using course_tracker.Models.extensions;
+using course_tracker.Models.exceptions;
+using SQLite;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace course_tracker.Services
 {
     public class TermRepository
     {
-        private static List<Term> _terms = new List<Term>()
+        private readonly SQLiteAsyncConnection _sqlConn;
+        public TermRepository(SQLiteAsyncConnection sqlConn)
         {
-            new Term
-            {
-                Title = "term 1",
-                Id = "term-1-id",
-                Start = DateTime.UtcNow.AddDays(-10),
-                End = DateTime.UtcNow.AddDays(10).AddMonths(6)
-            },
-            new Term
-            {
-                Title = "term 2",
-                Id = "term-2-id",
-                Start = DateTime.UtcNow.AddDays(10).AddMonths(6),
-                End = DateTime.UtcNow.AddDays(10).AddMonths(12)
-            },
-            new Term
-            {
-                Title = "term 3",
-                Id = "term-3-id",
-                Start = DateTime.UtcNow.AddDays(10).AddMonths(12),
-                End = DateTime.UtcNow.AddDays(10).AddMonths(18)
-            },
-            new Term
-            {
-                Title = "term 4",
-                Id = "term-4-id",
-                Start = DateTime.UtcNow.AddDays(10).AddMonths(18),
-                End = DateTime.UtcNow.AddDays(10).AddMonths(24)
-            },
-            new Term
-            {
-                Title = "term 5",
-                Id = "term-5-id",
-                Start = DateTime.UtcNow.AddDays(10).AddMonths(24),
-                End = DateTime.UtcNow.AddDays(10).AddMonths(30)
-            }
-        };
-
-        public List<Term> GetTerms()
-        {
-            return _terms.OrderBy(term => term.Start).ToList();
+            _sqlConn = sqlConn;
         }
 
-        public Term GetTermById(string id)
+        public async Task<List<Term>> GetTermsAsync()
         {
-            return _terms.Find(term => term.Id == id);
+            return await _sqlConn.Table<Term>().OrderBy(term => term.Start).ToListAsync();
         }
 
-        public Term AddTerm(Term term)
+        public async Task<Term> GetTermByIdAsync(int id)
         {
-            term.Id = Guid.NewGuid().ToString();
-            _terms.Add(term);
+            return await _sqlConn.Table<Term>().FirstOrDefaultAsync(term => term.Id == id);
+        }
+
+        public async Task<Term> AddTermAsync(Term term)
+        {
+            await TermDateValidation(term.Start, term.End);
+            var id = await _sqlConn.InsertAsync(term);
+            return await GetTermByIdAsync(id);
+        }
+
+        public async Task<Term> UpdateTermAsync(Term term)
+        {
+            await TermDateValidation(term.Start, term.End);
+            await _sqlConn.UpdateAsync(term);
             return term;
         }
 
-        public Term UpdateTerm(string id, Term term)
+        public async Task<bool> RemoveTermAsync(int id)
         {
-            _terms = _terms.Replace(t => t.Id == id, term).ToList();
-            return term;
+            var count = await _sqlConn.DeleteAsync(new Term { Id = id });
+            return count > 0;
         }
 
-        public bool RemoveTerm(string id)
+        private async Task TermDateValidation(DateTime start, DateTime end)
         {
-            return _terms.Remove(t => t.Id == id);
+            if (end <= start) throw new PublicException($"Term end date must be after start date.");
+
+            var existingTerm = await _sqlConn.Table<Term>()
+                .FirstOrDefaultAsync(t => 
+                    (t.Start >= start && t.End < start) && // new Term Start is not between start and end dates of existing term
+                    (t.Start < end && t.End <= end)); // new Term end is not after another term starts and before the term ends
+
+            if (existingTerm != null) throw new PublicException($"A term already exists between {existingTerm.Start} and {existingTerm.End}.");
         }
     }
 }
