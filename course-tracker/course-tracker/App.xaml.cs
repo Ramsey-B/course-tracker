@@ -24,10 +24,18 @@ namespace course_tracker
 
         protected override void OnStart()
         {
-            sqlConn.CreateTableAsync<Term>().Wait();
-            sqlConn.CreateTableAsync<Course>().Wait();
-            sqlConn.CreateTableAsync<Assessment>().Wait();
-            CreateDummyData().Wait();
+            try
+            {
+                sqlConn.CreateTableAsync<Term>().Wait();
+                sqlConn.CreateTableAsync<Course>().Wait();
+                sqlConn.CreateTableAsync<Assessment>().Wait();
+                CreateDummyData();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
 
         protected override void OnSleep()
@@ -45,11 +53,11 @@ namespace course_tracker
             return new SQLiteAsyncConnection(path);
         }
 
-        private async Task CreateDummyData()
+        private void CreateDummyData()
         {
-            var terms = await sqlConn.Table<Term>().ToListAsync();
+            var termCount = sqlConn.Table<Term>().CountAsync().Result;
 
-            if (!terms.Any())
+            if (termCount > 0)
             {
                 var term = new Term
                 {
@@ -89,15 +97,15 @@ namespace course_tracker
                     NotificationEnabled = true
                 };
 
-                var termId = await sqlConn.InsertAsync(term);
+                var termId = sqlConn.InsertAsync(term).Result;
 
                 course.TermId = termId;
-                var courseId = await sqlConn.InsertAsync(course);
+                var courseId = sqlConn.InsertAsync(course).Result;
 
                 objectiveAssessment.CourseId = courseId;
                 performanceAssessment.CourseId = courseId;
-                await sqlConn.InsertAsync(objectiveAssessment);
-                await sqlConn.InsertAsync(performanceAssessment);
+                sqlConn.InsertAsync(objectiveAssessment).Wait();
+                sqlConn.InsertAsync(performanceAssessment).Wait();
             }
         }
     }
