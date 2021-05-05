@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="course_tracker.Views.CoursesPage"
+             Title="{Binding Title}">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCoursesCommand}">
+        <CollectionView x:Name="CoursesView" ItemsSource="{Binding Courses}" EmptyView="Term contains no courses">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame OutlineColor="Red" Padding="2" Margin="0,5,0,5">
+                        <StackLayout Orientation="Horizontal">
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding Title}" 
+                                        d:Text="{Binding .}"
+                                        LineBreakMode="NoWrap"
+                                        FontSize="16" />
+                                </StackLayout>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding Start, StringFormat='{0:MM/dd/yyyy}'}" />
+                                            <Span Text=" - " />
+                                            <Span Text="{Binding End, StringFormat='{0:MM/dd/yyyy}'}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                            <!--<Button BackgroundColor="Red" TextColor="White" Text="Delete" Clicked="DeleteTerm_Clicked"></Button>
+                            <Button BackgroundColor="Green" TextColor="White" Text="Edit" Clicked="EditTerm_Clicked"></Button>-->
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnCourseSelected"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
