@@ -22,22 +22,25 @@ namespace course_tracker.ViewModels
 
             MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", async (obj, term) =>
             {
-                var newTerm = term as Term;
-                await TermRepository.AddTermAsync(newTerm);
                 await LoadTerms();
             });
         }
 
+        private static object termsLock = new object();
         async Task LoadTerms()
         {
             IsBusy = true;
             try
             {
-                Terms.Clear();
-                var terms = await TermRepository.GetTermsAsync();
-                foreach (var term in terms)
+                var terms = await SqliteConn.Table<Term>().OrderBy(term => term.Start).ToListAsync();
+
+                lock (termsLock)
                 {
-                    Terms.Add(term);
+                    Terms.Clear();
+                    foreach (var term in terms)
+                    {
+                        Terms.Add(term);
+                    }
                 }
             }
             catch (Exception ex)
@@ -48,6 +51,12 @@ namespace course_tracker.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public async Task DeleteTerm(Term term)
+        {
+            await SqliteConn.DeleteAsync(term);
+            await LoadTerms();
         }
     }
 }

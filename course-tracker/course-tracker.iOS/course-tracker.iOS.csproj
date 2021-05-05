@@ -132,13 +132,13 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991265" />
+    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991864" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\course-tracker\course-tracker.csproj">
-      <Project>{B9713DC2-947C-4802-9DA2-9C00D0C900EF}</Project>
+      <Project>{3A938FB2-35D9-42A0-BF1A-910A2B476807}</Project>
       <Name>course-tracker</Name>
     </ProjectReference>
   </ItemGroup>

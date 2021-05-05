@@ -1,13 +1,9 @@
 ﻿using Xamarin.Forms;
 using course_tracker.Views;
-using course_tracker.Services;
 using SQLite;
-using System.Xml.Serialization;
-using System.IO;
 using course_tracker.Models;
-using System.Threading.Tasks;
-using System.Linq;
 using System;
+using coursetracker.SQL;
 
 namespace course_tracker
 {
@@ -17,25 +13,17 @@ namespace course_tracker
         public App()
         {
             InitializeComponent();
-            sqlConn = GetSQLConnection();
-            DependencyService.Register<SQLiteAsyncConnection>();
-            MainPage = new MainPage();
+            sqlConn = new SQLConnection().GetAsyncConnection();
+            DependencyService.Register<SQLConnection>();
+            MainPage = new NavigationPage(new TermsPage());
         }
 
         protected override void OnStart()
         {
-            try
-            {
-                sqlConn.CreateTableAsync<Term>().Wait();
-                sqlConn.CreateTableAsync<Course>().Wait();
-                sqlConn.CreateTableAsync<Assessment>().Wait();
-                CreateDummyData();
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            sqlConn.CreateTableAsync<Term>().Wait();
+            sqlConn.CreateTableAsync<Course>().Wait();
+            sqlConn.CreateTableAsync<Assessment>().Wait();
+            CreateDummyData();
         }
 
         protected override void OnSleep()
@@ -46,18 +34,11 @@ namespace course_tracker
         {
         }
 
-        private SQLiteAsyncConnection GetSQLConnection()
-        {
-            var docPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
-            var path = Path.Combine(docPath, "CourseTracker.db3");
-            return new SQLiteAsyncConnection(path);
-        }
-
         private void CreateDummyData()
         {
             var termCount = sqlConn.Table<Term>().CountAsync().Result;
 
-            if (termCount > 0)
+            if (termCount == 0)
             {
                 var term = new Term
                 {

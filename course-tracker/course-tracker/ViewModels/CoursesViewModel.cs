@@ -1,25 +1,24 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using course_tracker.Models;
-using course_tracker.ViewModels;
+using course_tracker.Views;
 using Xamarin.Forms;
 
-namespace coursetracker.ViewModels
+namespace course_tracker.ViewModels
 {
     public class CoursesViewModel : BaseViewModel
     {
         public ObservableCollection<Course> Courses { get; set; }
         public Command LoadCoursesCommand { get; set; }
 
-        private readonly Term _term;
+        public readonly Term Term;
 
         public CoursesViewModel(Term term = null)
         {
             if (term == null) term = GetDefaultTerm();
-            _term = term;
+            Term = term;
 
             if (term != null)
             {
@@ -32,23 +31,29 @@ namespace coursetracker.ViewModels
             Courses = new ObservableCollection<Course>();
             LoadCoursesCommand = new Command(async () => await LoadCourses());
 
-            //MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", async (obj, term) =>
-            //{
-            //    await LoadTerms();
-            //});
+            MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", async (obj, course) =>
+            {
+                await LoadCourses();
+            });
         }
 
+        private static object coursesLock = new object();
         async Task LoadCourses()
         {
             IsBusy = true;
             try
             {
-                Courses.Clear();
-                if (_term == null) return;
-                var courses = await SqliteConn.Table<Course>().Where(c => c.TermId == _term.Id).OrderBy(term => term.Start).ToListAsync();
-                foreach (var course in courses)
+                if (Term == null) return;
+                var courses = await SqliteConn.Table<Course>().Where(c => c.TermId == Term.Id).OrderBy(term => term.Start).ToListAsync();
+
+                // Loading the data causes the refresh to trigger
+                lock (coursesLock)
                 {
-                    Courses.Add(course);
+                    Courses.Clear();
+                    foreach (var course in courses)
+                    {
+                        Courses.Add(course);
+                    }
                 }
             }
             catch (Exception ex)
@@ -59,6 +64,12 @@ namespace coursetracker.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public async Task DeleteCourses(Course course)
+        {
+            await SqliteConn.DeleteAsync(course);
+            await LoadCourses();
         }
     }
 }

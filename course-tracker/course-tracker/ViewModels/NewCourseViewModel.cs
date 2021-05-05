@@ -62,9 +62,9 @@ namespace course_tracker.ViewModels
 
             if (!course.InstructorPhone.IsValidPhoneNumber()) ErrorText = "* Must provide a valid phone number for course instructor.";
 
-            if (_term.Start > course.Start) ErrorText = "* Course cannot begin before term start date.";
+            if (_term.Start > course.Start) ErrorText = $"* Course cannot begin before term start date of {_term.Start}.";
 
-            if (_term.End < course.End) ErrorText = "* Course cannot end after term end date.";
+            if (_term.End < course.End) ErrorText = $"* Course cannot end after term end date of {_term.End}.";
 
             var courseCount = await SqliteConn.Table<Course>().Where(c => c.TermId == _term.Id).CountAsync();
             if (courseCount > 5) ErrorText = $"* Term '{_term.Title}' has already reached the maximum number of courses of 6.";

@@ -3,19 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              x:Class="course_tracker.Views.NewTermPage"
              Title="New Term">
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
-    </ContentPage.ToolbarItems>
-    
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
+        <StackLayout Padding="15">
             <Label Text="Title" FontSize="Medium" />
-            <Entry Text="{Binding Term.Title}" d:Text="Term title" FontSize="Small" />
+            <Entry Text="{Binding NewTerm.Title}" d:Text="Term title" FontSize="Small" Placeholder="Term Title"/>
+            <Label Text="Start Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewTerm.Start}" MinimumDate="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label Text="End Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewTerm.End}" MinimumDate="{Binding NewTerm.Start}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
+                <Button BackgroundColor="Blue" Text="Save" TextColor="White" Clicked="Save_Clicked"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
     

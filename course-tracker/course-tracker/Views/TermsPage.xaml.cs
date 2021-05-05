@@ -24,12 +24,31 @@ namespace course_tracker.Views
         {
             var layout = (BindableObject)sender;
             var term = (Term)layout.BindingContext;
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(term)));
+            await Navigation.PushAsync(new CoursesPage(term));
         }
 
         async void AddTerm_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewTermPage()));
+        }
+
+        async void EditTerm_Clicked(object sender, EventArgs e)
+        {
+            var layout = (BindableObject)sender;
+            var term = (Term)layout.BindingContext;
+            await Navigation.PushModalAsync(new NavigationPage(new NewTermPage(term)));
+        }
+
+        async void DeleteTerm_Clicked(object sender, EventArgs args)
+        {
+            var layout = (BindableObject)sender;
+            var term = (Term)layout.BindingContext;
+
+            bool answer = await DisplayAlert("Are you sure?", $"Are you sure you want to delete '{term.Title}' from your terms?", "Yes", "No");
+            if (answer)
+            {
+                await viewModel.DeleteTerm(term);
+            }
         }
 
         protected override void OnAppearing()

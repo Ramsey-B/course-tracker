@@ -27,7 +27,6 @@ namespace course_tracker.Services
 
         public async Task<Term> AddTermAsync(Term term)
         {
-            await TermDateValidation(term.Start, term.End);
             var id = await _sqlConn.InsertAsync(term);
             return await GetTermByIdAsync(id);
         }

@@ -1,39 +1,33 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker.iOS\\course-tracker.iOS.csproj": {}
+    "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker.iOS/course-tracker.iOS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker.iOS\\course-tracker.iOS.csproj": {
+    "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker.iOS/course-tracker.iOS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker.iOS\\course-tracker.iOS.csproj",
+        "projectUniqueName": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker.iOS/course-tracker.iOS.csproj",
         "projectName": "course-tracker.iOS",
-        "projectPath": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker.iOS\\course-tracker.iOS.csproj",
-        "packagesPath": "C:\\Users\\ramse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker.iOS\\obj\\",
+        "projectPath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker.iOS/course-tracker.iOS.csproj",
+        "packagesPath": "/Users/ramseybland/.nuget/packages/",
+        "outputPath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker.iOS/obj/",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ramse\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/ramseybland/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "xamarinios10"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "xamarinios10": {
             "projectReferences": {
-              "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\course-tracker.csproj": {
-                "projectPath": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\course-tracker.csproj"
+              "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj": {
+                "projectPath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj"
               }
             }
           }
@@ -48,7 +42,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.4.0.991265, )"
+              "version": "[4.4.0.991864, )"
             }
           }
         }
@@ -65,32 +59,27 @@
         }
       }
     },
-    "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\course-tracker.csproj": {
+    "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\course-tracker.csproj",
+        "projectUniqueName": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj",
         "projectName": "course-tracker",
-        "projectPath": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\course-tracker.csproj",
-        "packagesPath": "C:\\Users\\ramse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ramse\\source\\repos\\course-tracker\\course-tracker\\course-tracker\\obj\\",
+        "projectPath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj",
+        "packagesPath": "/Users/ramseybland/.nuget/packages/",
+        "outputPath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
-        ],
         "configFilePaths": [
-          "C:\\Users\\ramse\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "/Users/ramseybland/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
             "projectReferences": {}
           }
         },
@@ -102,6 +91,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "dependencies": {
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -119,7 +109,7 @@
             },
             "Xamarin.Forms": {
               "target": "Package",
-              "version": "[4.4.0.991265, )"
+              "version": "[4.4.0.991864, )"
             },
             "sqlite-net-pcl": {
               "target": "Package",
@@ -136,7 +126,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }

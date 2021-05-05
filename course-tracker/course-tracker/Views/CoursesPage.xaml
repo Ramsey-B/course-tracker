@@ -6,6 +6,11 @@
              mc:Ignorable="d"
              x:Class="course_tracker.Views.CoursesPage"
              Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="AddCourse_Clicked" />
+    </ContentPage.ToolbarItems>
+
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCoursesCommand}">
         <CollectionView x:Name="CoursesView" ItemsSource="{Binding Courses}" EmptyView="Term contains no courses">
             <CollectionView.ItemTemplate>
@@ -29,8 +34,8 @@
                                     </Label.FormattedText>
                                 </Label>
                             </StackLayout>
-                            <!--<Button BackgroundColor="Red" TextColor="White" Text="Delete" Clicked="DeleteTerm_Clicked"></Button>
-                            <Button BackgroundColor="Green" TextColor="White" Text="Edit" Clicked="EditTerm_Clicked"></Button>-->
+                            <Button BackgroundColor="Red" TextColor="White" Text="Delete" Clicked="DeleteCourse_Clicked"></Button>
+                            <Button BackgroundColor="Green" TextColor="White" Text="Edit" Clicked="EditCourse_Clicked"></Button>
                             <StackLayout.GestureRecognizers>
                                 <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnCourseSelected"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>

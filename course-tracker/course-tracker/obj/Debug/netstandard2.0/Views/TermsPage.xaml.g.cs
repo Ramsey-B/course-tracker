@@ -13,7 +13,7 @@
 namespace course_tracker.Views {
     
     
-    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views\\TermsPage.xaml")]
+    [global::Xamarin.Forms.Xaml.XamlFilePathAttribute("Views/TermsPage.xaml")]
     public partial class TermsPage : global::Xamarin.Forms.ContentPage {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Forms.Build.Tasks.XamlG", "2.0.0.0")]

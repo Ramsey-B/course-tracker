@@ -2,9 +2,8 @@
 using System.Threading.Tasks;
 using course_tracker.Models;
 using course_tracker.Models.extensions;
-using course_tracker.ViewModels;
 
-namespace coursetracker.ViewModels
+namespace course_tracker.ViewModels
 {
     public class NewTermViewModel : BaseViewModel
     {
