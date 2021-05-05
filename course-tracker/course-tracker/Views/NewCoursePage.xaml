@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:behavior="clr-namespace:coursetracker.Behaviors"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    x:Class="course_tracker.Views.NewCoursePage">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <Label Text="Title" FontSize="Medium" />
+            <Entry Text="{Binding NewCourse.Title}" FontSize="Small" Placeholder="Course Title"/>
+            <Label Text="Start Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewCourse.Start}" MinimumDate="{x:Static sys:DateTime.Now}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label Text="End Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewCourse.End}" MinimumDate="{Binding NewTerm.Start}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label Text="Instructor's Name" FontSize="Medium" />
+            <Entry Text="{Binding NewCourse.InstructorName}" FontSize="Small" Placeholder="Instructor's Name"/>
+            <Label Text="Instructor's Email" FontSize="Medium" />
+            <Entry Text="{Binding NewCourse.InstructorEmail}" FontSize="Small" Placeholder="xxxxxxxx@xxxxx.com"/>
+            <Label Text="Instructor's Phone Number" FontSize="Medium" />
+            <Entry Text="{Binding NewCourse.InstructorPhone}" Keyboard="Numeric" FontSize="Small" Placeholder="(xxx) xxx-xxxx">
+                <Entry.Behaviors>
+                    <behavior:MaskBehavior Mask="(XXX) XXX-XXXX" />
+                </Entry.Behaviors>
+            </Entry>
+            <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
+                <Button BackgroundColor="Blue" Text="Save" TextColor="White" Clicked="Save_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
