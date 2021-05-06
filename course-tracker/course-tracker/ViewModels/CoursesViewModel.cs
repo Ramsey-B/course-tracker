@@ -15,9 +15,8 @@ namespace course_tracker.ViewModels
 
         public readonly Term Term;
 
-        public CoursesViewModel(Term term = null)
-        {
-            if (term == null) term = GetDefaultTerm();
+        public CoursesViewModel(Term term)
+        { 
             Term = term;
 
             if (term != null)

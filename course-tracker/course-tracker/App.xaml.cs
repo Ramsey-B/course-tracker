@@ -20,6 +20,9 @@ namespace course_tracker
 
         protected override void OnStart()
         {
+            sqlConn.DropTableAsync<Term>().Wait();
+            sqlConn.DropTableAsync<Course>().Wait();
+            sqlConn.DropTableAsync<Assessment>().Wait();
             sqlConn.CreateTableAsync<Term>().Wait();
             sqlConn.CreateTableAsync<Course>().Wait();
             sqlConn.CreateTableAsync<Assessment>().Wait();
@@ -52,7 +55,7 @@ namespace course_tracker
                     Title = "Dummy Course",
                     Start = DateTime.UtcNow.AddDays(10),
                     End = DateTime.UtcNow.AddDays(10).AddMonths(1),
-                    Status = CourseStatus.PlanToTake,
+                    Status = "Plan to Take",
                     InstructorName = "James Bond",
                     InstructorPhone = "(555) 867-5309",
                     InstructorEmail = "james.bond@email.com",

@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="coursetracker.Views.CourseDetailsPage"
+    Title="{Binding Title}">
+    <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadAssessmentsCommand}">
+        <StackLayout Padding="20">
+            <Grid x:Name="MainNavBar" ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Course.Title}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#2196F3"></Label>
+                <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Course.Title}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Status" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="1" Grid.Row="2" Text="{Binding Course.Status}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="Start Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding Course.Start, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="End Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="1" Grid.Row="4" Text="{Binding Course.End, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="0" Grid.Row="5" FontAttributes="Bold" Text="Instructor's Name" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="5" Text="{Binding Course.InstructorName}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="0" Grid.Row="6" FontAttributes="Bold" Text="Instructor's Phone Number" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="1" Grid.Row="6" Text="{Binding Course.InstructorPhone}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="0" Grid.Row="7" FontAttributes="Bold" Text="Instructor's Email" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="7" Text="{Binding Course.InstructorEmail}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+            </Grid>
+
+            <Grid IsVisible="{Binding HasObjectiveAssessment}" ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" Text="Objective Assessment" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#2196F3"></Label>
+                <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Assessment Name" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding ObjectiveAssessment.Title}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="0" Grid.Row="2" FontAttributes="Bold" Text="Start Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="1" Grid.Row="2" Text="{Binding ObjectiveAssessment.Start, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                <Label Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="End Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                <Label Grid.Column="1" Grid.Row="3" Text="{Binding ObjectiveAssessment.End, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+            </Grid>
+        </StackLayout>
+    </RefreshView>
+</ContentPage>

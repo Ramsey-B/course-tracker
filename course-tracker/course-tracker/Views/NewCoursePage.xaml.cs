@@ -12,6 +12,14 @@ namespace course_tracker.Views
 
         private readonly bool isUpdate = false;
 
+        public List<string> CourseStatuses { get; set; }  = new List<string>
+        {
+            "Plan to Take",
+            "Completed",
+            "Dropped",
+            "In Progress"
+        };
+
         public NewCoursePage(Term term, Course course = null)
         {
             InitializeComponent();
@@ -33,14 +41,14 @@ namespace course_tracker.Views
                     InstructorEmail = "",
                     InstructorName = "",
                     InstructorPhone = "",
-                    Status = CourseStatus.PlanToTake
+                    Status = "Plan to Take"
                 };
             }
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            var success = false;
+            bool success;
             if (isUpdate)
             {
                 success = await viewModel.UpdateTerm();

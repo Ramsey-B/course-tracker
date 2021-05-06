@@ -14,7 +14,7 @@ namespace course_tracker.Models
         [NotNull]
         public string Title { get; set; }
         [NotNull]
-        public CourseStatus Status { get; set; }
+        public string Status { get; set; }
         [NotNull]
         public DateTime Start { get; set; }
         [NotNull]
@@ -25,13 +25,5 @@ namespace course_tracker.Models
         public string InstructorEmail { get; set; }
         public string Notes { get; set; }
         public bool NotificationEnabled { get; set; }
-    }
-
-    public enum CourseStatus
-    {
-        InProgress,
-        Completed,
-        Dropped,
-        PlanToTake
     }
 }

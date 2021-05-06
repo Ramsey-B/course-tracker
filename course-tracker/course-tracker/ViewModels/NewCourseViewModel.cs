@@ -56,7 +56,9 @@ namespace course_tracker.ViewModels
 
             if (course.Start >= course.End) ErrorText = "* Course start date can not be after course end date.";
 
-            if (course.InstructorName == null) ErrorText = "* Must provide course instructor's information.";
+            if (course.Status.IsNull()) ErrorText = "* Must select a course status.";
+
+            if (course.InstructorName.IsNull()) ErrorText = "* Must provide course instructor's information.";
 
             if (!course.InstructorEmail.IsValidEmail()) ErrorText = "* Must provide a valid email for course instructor.";
 

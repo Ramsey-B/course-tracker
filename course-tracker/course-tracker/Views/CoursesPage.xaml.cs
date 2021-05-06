@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using course_tracker.Models;
 using course_tracker.ViewModels;
+using coursetracker.Views;
 using Xamarin.Forms;
 
 namespace course_tracker.Views
@@ -24,7 +25,9 @@ namespace course_tracker.Views
 
         async void OnCourseSelected(object sender, EventArgs args)
         {
-
+            var layout = (BindableObject)sender;
+            var course = (Course)layout.BindingContext;
+            await Navigation.PushAsync(new CourseDetailsPage(course));
         }
 
         async void EditCourse_Clicked(object sender, EventArgs e)

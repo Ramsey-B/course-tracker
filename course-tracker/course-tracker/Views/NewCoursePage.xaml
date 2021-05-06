@@ -30,6 +30,16 @@
                     <behavior:MaskBehavior Mask="(XXX) XXX-XXXX" />
                 </Entry.Behaviors>
             </Entry>
+            <Picker Title="Select a Course Status" SelectedItem="{Binding NewCourse.Status}">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                      <x:String>Completed</x:String>
+                      <x:String>Dropped</x:String>
+                      <x:String>In Progress</x:String>
+                      <x:String>Plan to Take</x:String>
+                    </x:Array>
+                 </Picker.ItemsSource>
+            </Picker>
             <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
             <StackLayout Orientation="Horizontal">
                 <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
