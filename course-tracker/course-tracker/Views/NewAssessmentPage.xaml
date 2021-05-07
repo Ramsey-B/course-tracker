@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="course_tracker.Views.NewAssessmentPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Padding="15">
+            <Label Text="Title" FontSize="Medium" />
+            <Entry Text="{Binding NewAssessment.Title}" FontSize="Small" Placeholder="Assessment Title"/>
+            <Label Text="Start Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding StartDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding EndDate}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label Text="End Date" FontSize="Medium" />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding EndDate}">
+                    <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
+                </DatePicker>
+            </StackLayout>
+            <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
+                <Button BackgroundColor="Blue" Text="Save" TextColor="White" Clicked="Save_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

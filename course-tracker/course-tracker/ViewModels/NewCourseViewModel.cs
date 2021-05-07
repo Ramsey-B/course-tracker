@@ -21,35 +21,80 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref errorText, value); }
         }
 
-        private readonly Term _term;
-
-        public NewCourseViewModel(Term term)
+        DateTime startDate;
+        public DateTime StartDate
         {
-            _term = term;
+            get { return startDate; }
+            set { SetProperty(ref startDate, value); }
         }
 
-        public async Task<bool> AddTerm()
+        DateTime endDate;
+        public DateTime EndDate
         {
-            if (await ValidateCourse(NewCourse))
+            get { return endDate; }
+            set { SetProperty(ref endDate, value); }
+        }
+
+        DateTime maxDate;
+        public DateTime MaxDate
+        {
+            get { return maxDate; }
+            set { SetProperty(ref maxDate, value); }
+        }
+
+        public readonly Term Term;
+        private readonly bool isUpdate = false;
+
+        public NewCourseViewModel(Term term, Course course = null)
+        {
+            MaxDate = term.End;
+            Term = term;
+
+            if (course != null)
             {
-                var id = await SqliteConn.InsertAsync(NewCourse);
-                return id > 0;
+                StartDate = course.Start;
+                EndDate = course.End;
+                NewCourse = course;
+                isUpdate = true;
             }
-            return false;
+            else
+            {
+                StartDate = term.Start;
+                EndDate = term.Start;
+                NewCourse = new Course
+                {
+                    TermId = term.Id,
+                    Title = "",
+                    InstructorEmail = "",
+                    InstructorName = "",
+                    InstructorPhone = "",
+                    Status = "Plan to Take"
+                };
+            }
         }
 
-        public async Task<bool> UpdateTerm()
+        public async Task<bool> SaveCourse()
         {
+            NewCourse.Start = StartDate;
+            NewCourse.End = EndDate;
             if (await ValidateCourse(NewCourse))
             {
-                var rowCount = await SqliteConn.UpdateAsync(NewCourse);
-                return rowCount > 0;
+                if (isUpdate)
+                {
+                    await SqliteConn.UpdateAsync(NewCourse);
+                }
+                else
+                {
+                    await SqliteConn.InsertAsync(NewCourse);
+                }
+                return true;
             }
             return false;
         }
 
         private async Task<bool> ValidateCourse(Course course)
         {
+            ErrorText = "";
             if (course.Title.IsNull()) ErrorText = "* Must provide a course name.";
 
             if (course.Start == null || course.End == null) ErrorText ="* Must provide a course start and end date.";
@@ -64,12 +109,12 @@ namespace course_tracker.ViewModels
 
             if (!course.InstructorPhone.IsValidPhoneNumber()) ErrorText = "* Must provide a valid phone number for course instructor.";
 
-            if (_term.Start > course.Start) ErrorText = $"* Course cannot begin before term start date of {_term.Start}.";
+            if (Term.Start > course.Start) ErrorText = $"* Course cannot begin before term start date of {Term.Start}.";
 
-            if (_term.End < course.End) ErrorText = $"* Course cannot end after term end date of {_term.End}.";
+            if (Term.End < course.End) ErrorText = $"* Course cannot end after term end date of {Term.End}.";
 
-            var courseCount = await SqliteConn.Table<Course>().Where(c => c.TermId == _term.Id).CountAsync();
-            if (courseCount > 5) ErrorText = $"* Term '{_term.Title}' has already reached the maximum number of courses of 6.";
+            var courseCount = await SqliteConn.Table<Course>().Where(c => c.TermId == Term.Id).CountAsync();
+            if (courseCount > 5) ErrorText = $"* Term '{Term.Title}' has already reached the maximum number of courses of 6.";
 
             return ErrorText.IsNull();
         }

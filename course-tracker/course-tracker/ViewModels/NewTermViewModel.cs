@@ -21,26 +21,59 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref errorText, value); }
         }
 
-        public NewTermViewModel()
+        DateTime startDate;
+        public DateTime StartDate
         {
+            get { return startDate; }
+            set { SetProperty(ref startDate, value); }
         }
 
-        public async Task<bool> AddTerm()
+        DateTime endDate;
+        public DateTime EndDate
         {
-            if (await ValidateTerm())
+            get { return endDate; }
+            set { SetProperty(ref endDate, value); }
+        }
+
+        private readonly bool isUpdate = false;
+
+        public NewTermViewModel(Term term = null)
+        {
+            if (term == null)
             {
-                var id = await SqliteConn.InsertAsync(NewTerm);
-                return id > 0;
+                StartDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+                EndDate = StartDate;
+                NewTerm = new Term
+                {
+                    Title = ""
+                };
+                Title = "New Term";
             }
-            return false;
+            else
+            {
+                StartDate = term.Start;
+                EndDate = term.End;
+                isUpdate = true;
+                NewTerm = term;
+                Title = $"Update {term.Title}";
+            }
         }
 
-        public async Task<bool> UpdateTerm()
+        public async Task<bool> SaveTerm()
         {
+            NewTerm.Start = StartDate;
+            NewTerm.End = EndDate;
             if (await ValidateTerm())
             {
-                var rowCount = await SqliteConn.UpdateAsync(NewTerm);
-                return rowCount > 0;
+                if (isUpdate)
+                {
+                    await SqliteConn.UpdateAsync(NewTerm);
+                }
+                else
+                {
+                    await SqliteConn.InsertAsync(NewTerm);
+                }
+                return true;
             }
             return false;
         }

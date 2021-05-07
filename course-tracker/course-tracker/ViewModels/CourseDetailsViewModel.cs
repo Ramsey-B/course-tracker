@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using course_tracker.Models;
+using course_tracker.Views;
 using Xamarin.Forms;
 
 namespace course_tracker.ViewModels
@@ -51,10 +52,16 @@ namespace course_tracker.ViewModels
             Title = course.Title;
             LoadAssessmentsCommand = new Command(async () => await LoadAssessments());
 
-            //MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", async (obj, course) =>
-            //{
-            //    await LoadCourses();
-            //});
+            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddObjectiveAssessment", (obj, assessment) =>
+            {
+                ObjectiveAssessment = assessment;
+                HasObjectiveAssessment = true;
+            });
+            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddPerformanceAssessment", (obj, assessment) =>
+            {
+                PerformanceAssessment = assessment;
+                HasPerformanceAssessment = true;
+            });
         }
 
         private static object assessmentsLock = new object();
@@ -79,7 +86,7 @@ namespace course_tracker.ViewModels
                         else
                         {
                             PerformanceAssessment = assessment;
-                            HasObjectiveAssessment = true;
+                            HasPerformanceAssessment = true;
                         }
                     }
                 }
@@ -92,6 +99,12 @@ namespace course_tracker.ViewModels
             {
                 IsBusy = false;
             }
+        }
+
+        public async Task DeleteAssessment(Assessment assessment)
+        {
+            await SqliteConn.DeleteAsync(assessment);
+            await LoadAssessments();
         }
     }
 }

@@ -1,13 +1,8 @@
 ﻿using course_tracker.Models;
-using course_tracker.Models.extensions;
-using course_tracker.ViewModels;
 using course_tracker.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace course_tracker.Views
 {
@@ -22,35 +17,12 @@ namespace course_tracker.Views
         public NewTermPage(Term existingTerm = null)
         {
             InitializeComponent();
-            BindingContext = viewModel = new NewTermViewModel();
-
-            if (existingTerm == null)
-            {
-                viewModel.NewTerm = new Term 
-                {
-                    Title = "",
-                    Start = DateTime.Now,
-                    End = DateTime.Now
-                };
-            }
-            else
-            {
-                isUpdate = true;
-                viewModel.NewTerm = existingTerm;
-            }
+            BindingContext = viewModel = new NewTermViewModel(existingTerm);
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            var success = false;
-            if (isUpdate)
-            {
-                success = await viewModel.UpdateTerm();
-            }
-            else
-            {
-                success = await viewModel.AddTerm();
-            }
+            var success = await viewModel.SaveTerm();
             if (success)
             {
                 MessagingCenter.Send(this, "AddTerm", viewModel.NewTerm);

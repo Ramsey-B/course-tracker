@@ -40,21 +40,22 @@ namespace course_tracker
         private void CreateDummyData()
         {
             var termCount = sqlConn.Table<Term>().CountAsync().Result;
+            var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
 
             if (termCount == 0)
             {
                 var term = new Term
                 {
                     Title = "Dummy Term",
-                    Start = DateTime.UtcNow.AddDays(-1),
-                    End = DateTime.UtcNow.AddMonths(6),
+                    Start = today.AddDays(-1),
+                    End = today.AddMonths(6),
                 };
 
                 var course = new Course
                 {
                     Title = "Dummy Course",
-                    Start = DateTime.UtcNow.AddDays(10),
-                    End = DateTime.UtcNow.AddDays(10).AddMonths(1),
+                    Start = today.AddDays(10),
+                    End = today.AddDays(10).AddMonths(1),
                     Status = "Plan to Take",
                     InstructorName = "James Bond",
                     InstructorPhone = "(555) 867-5309",
@@ -66,18 +67,18 @@ namespace course_tracker
                 var objectiveAssessment = new Assessment
                 {
                     Title = "Dummy Objective Assessment",
-                    Start = DateTime.UtcNow.AddDays(15),
-                    End = DateTime.UtcNow.AddDays(20),
+                    Start = today.AddDays(15),
+                    End = today.AddDays(20),
                     Type = AssessmentType.Objective,
                     NotificationEnabled = false
                 };
 
                 var performanceAssessment = new Assessment
                 {
-                    Title = "Dummy Objective Assessment",
-                    Start = DateTime.UtcNow.AddDays(21),
-                    End = DateTime.UtcNow.AddDays(25),
-                    Type = AssessmentType.Objective,
+                    Title = "Dummy Performance Assessment",
+                    Start = today.AddDays(21),
+                    End = today.AddDays(25),
+                    Type = AssessmentType.Performance,
                     NotificationEnabled = true
                 };
 
@@ -89,7 +90,7 @@ namespace course_tracker
                 objectiveAssessment.CourseId = courseId;
                 performanceAssessment.CourseId = courseId;
                 sqlConn.InsertAsync(objectiveAssessment).Wait();
-                sqlConn.InsertAsync(performanceAssessment).Wait();
+                //sqlConn.InsertAsync(performanceAssessment).Wait();
             }
         }
     }

@@ -10,13 +10,13 @@
             <Entry Text="{Binding NewCourse.Title}" FontSize="Small" Placeholder="Course Title"/>
             <Label Text="Start Date" FontSize="Medium" />
             <StackLayout>
-                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewCourse.Start}" MinimumDate="{x:Static sys:DateTime.Now}">
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding StartDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding MaxDate}">
                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
                 </DatePicker>
             </StackLayout>
             <Label Text="End Date" FontSize="Medium" />
             <StackLayout>
-                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding NewCourse.End}" MinimumDate="{Binding NewTerm.Start}">
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding MaxDate}">
                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
                 </DatePicker>
             </StackLayout>

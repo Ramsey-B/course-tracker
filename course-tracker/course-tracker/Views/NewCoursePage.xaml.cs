@@ -10,8 +10,6 @@ namespace course_tracker.Views
     {
         NewCourseViewModel viewModel;
 
-        private readonly bool isUpdate = false;
-
         public List<string> CourseStatuses { get; set; }  = new List<string>
         {
             "Plan to Take",
@@ -23,40 +21,12 @@ namespace course_tracker.Views
         public NewCoursePage(Term term, Course course = null)
         {
             InitializeComponent();
-            BindingContext = viewModel = new NewCourseViewModel(term);
-
-            if (course != null)
-            {
-                viewModel.NewCourse = course;
-                isUpdate = true;
-            }
-            else
-            {
-                viewModel.NewCourse = new Course
-                {
-                    TermId = term.Id,
-                    Title = "",
-                    Start = DateTime.Now,
-                    End = DateTime.Now,
-                    InstructorEmail = "",
-                    InstructorName = "",
-                    InstructorPhone = "",
-                    Status = "Plan to Take"
-                };
-            }
+            BindingContext = viewModel = new NewCourseViewModel(term, course);
         }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
-            bool success;
-            if (isUpdate)
-            {
-                success = await viewModel.UpdateTerm();
-            }
-            else
-            {
-                success = await viewModel.AddTerm();
-            }
+            var success = await viewModel.SaveCourse();
             if (success)
             {
                 MessagingCenter.Send(this, "AddCourse", viewModel.NewCourse);

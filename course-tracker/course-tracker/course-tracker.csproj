@@ -25,5 +25,6 @@
   <ItemGroup>
     <Folder Include="SQL\" />
     <Folder Include="Behaviors\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
 </Project>
