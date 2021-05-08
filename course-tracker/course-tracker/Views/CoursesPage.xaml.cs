@@ -49,6 +49,11 @@ namespace course_tracker.Views
             }
         }
 
+        async void EditTerm_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewTermPage(viewModel.Term)));
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();

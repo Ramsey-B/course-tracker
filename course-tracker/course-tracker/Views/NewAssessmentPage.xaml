@@ -2,13 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="course_tracker.Views.NewAssessmentPage">
-
-    <NavigationPage.TitleView>
-        <StackLayout>
-            <Label TextColor="White" FontSize="20" Text="{Binding Title}"></Label>
-        </StackLayout>
-    </NavigationPage.TitleView>
+    x:Class="course_tracker.Views.NewAssessmentPage"
+    Title="{Binding Title}">
 
     <ContentPage.Content>
         <StackLayout Padding="15">

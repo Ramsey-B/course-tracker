@@ -4,13 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="course_tracker.Views.NewTermPage">
-
-    <NavigationPage.TitleView>
-        <StackLayout>
-            <Label TextColor="White" FontSize="20" Text="{Binding Title}"></Label>
-        </StackLayout>
-    </NavigationPage.TitleView>
+             x:Class="course_tracker.Views.NewTermPage"
+             Title="{Binding Title}">
     
     <ContentPage.Content>
         <StackLayout Padding="15">

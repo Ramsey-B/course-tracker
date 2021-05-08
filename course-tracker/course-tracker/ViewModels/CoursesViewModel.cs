@@ -13,7 +13,12 @@ namespace course_tracker.ViewModels
         public ObservableCollection<Course> Courses { get; set; }
         public Command LoadCoursesCommand { get; set; }
 
-        public readonly Term Term;
+        Term _term;
+        public Term Term
+        {
+            get { return _term; }
+            set { SetProperty(ref _term, value); }
+        }
 
         public CoursesViewModel(Term term)
         { 
@@ -27,6 +32,11 @@ namespace course_tracker.ViewModels
             MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", async (obj, course) =>
             {
                 await LoadCourses();
+            });
+
+            MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", async (obj, term) =>
+            {
+                Term = term;
             });
         }
 

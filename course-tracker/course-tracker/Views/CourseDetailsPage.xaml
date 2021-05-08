@@ -2,13 +2,8 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:coursetracker.Converters"
-    x:Class="course_tracker.Views.CourseDetailsPage">
-
-    <NavigationPage.TitleView>
-        <StackLayout>
-            <Label TextColor="White" FontSize="20" Text="{Binding Title}"></Label>
-        </StackLayout>
-    </NavigationPage.TitleView>
+    x:Class="course_tracker.Views.CourseDetailsPage"
+    Title="{Binding Title}">
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -18,7 +13,7 @@
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadAssessmentsCommand}">
         <ScrollView BackgroundColor="LightGray">
-            <StackLayout Padding="20">
+            <StackLayout Padding="10">
                 <StackLayout>
                     <Grid x:Name="MainNavBar" ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1">
                         <Grid.ColumnDefinitions>
