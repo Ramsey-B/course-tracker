@@ -1,9 +1,0 @@
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\bin\Debug\netstandard2.0\course-tracker.models.deps.json
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\bin\Debug\netstandard2.0\course-tracker.models.dll
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.csprojAssemblyReference.cache
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.AssemblyInfoInputs.cache
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.AssemblyInfo.cs
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\bin\Debug\netstandard2.0\course-tracker.models.pdb
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.csproj.CoreCompileInputs.cache
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.dll
-C:\Users\ramse\source\repos\course-tracker\course-tracker.models\obj\Debug\netstandard2.0\course-tracker.models.pdb

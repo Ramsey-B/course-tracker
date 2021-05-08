@@ -1,0 +1,44 @@
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{8063A8E0-B68F-4F11-8FA9-E6F19A4E9B98}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="course-tracker/course-tracker/Views/CoursesPage.xaml" Line="8" Column="43" />
+      <File FileName="course-tracker/course-tracker/Views/CoursesPage.xaml.cs" Line="30" Column="43" />
+      <File FileName="course-tracker/course-tracker/Views/CourseDetailsPage.xaml" Line="6" Column="29" />
+      <File FileName="course-tracker/course-tracker/Views/NewAssessmentPage.xaml" Line="6" Column="29" />
+      <File FileName="course-tracker/course-tracker/Views/NewCoursePage.xaml" Line="6" Column="28" />
+      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml" Line="8" Column="37" />
+      <File FileName="course-tracker/course-tracker/Views/TermsPage.xaml" Line="8" Column="37" />
+      <File FileName="course-tracker/course-tracker/ViewModels/CoursesViewModel.cs" Line="39" Column="29" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="course-tracker" expanded="True">
+            <Node name="course-tracker" expanded="True">
+              <Node name="Services" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="CoursesViewModel.cs" selected="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="CourseDetailsPage.xaml" expanded="True" />
+                <Node name="CoursesPage.xaml" expanded="True" />
+                <Node name="NewAssessmentPage.xaml" expanded="True" />
+                <Node name="NewCoursePage.xaml" expanded="True" />
+                <Node name="NewTermPage.xaml" expanded="True" />
+                <Node name="TermsPage.xaml" expanded="True" />
+              </Node>
+              <Node name="App.xaml" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.course-tracker.Android PreferredExecutionTarget="Android.pixel_2_pie_9_0_-_api_28" />
+</Properties>
