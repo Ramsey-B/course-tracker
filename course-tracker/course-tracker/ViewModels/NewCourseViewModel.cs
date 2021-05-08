@@ -52,6 +52,7 @@ namespace course_tracker.ViewModels
 
             if (course != null)
             {
+                Title = $"Update {course.Title}";
                 StartDate = course.Start;
                 EndDate = course.End;
                 NewCourse = course;
@@ -59,6 +60,7 @@ namespace course_tracker.ViewModels
             }
             else
             {
+                Title = "New Course";
                 StartDate = term.Start;
                 EndDate = term.Start;
                 NewCourse = new Course

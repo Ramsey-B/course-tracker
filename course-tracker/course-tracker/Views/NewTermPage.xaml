@@ -3,15 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             x:Class="course_tracker.Views.NewTermPage"
-             Title="{Binding Title}">
+             x:Class="course_tracker.Views.NewTermPage">
+
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label TextColor="White" FontSize="20" Text="{Binding Title}"></Label>
+        </StackLayout>
+    </NavigationPage.TitleView>
     
     <ContentPage.Content>
         <StackLayout Padding="15">
             <Label Text="Title" FontSize="Medium" />
-            <Entry Text="{Binding NewTerm.Title}" d:Text="Term title" FontSize="Small" Placeholder="Term Title"/>
+            <Entry Text="{Binding NewTerm.Title}" d:Text="Term title" FontSize="Small" Placeholder="Term Title" />
             <Label Text="Start Date" FontSize="Medium" />
             <StackLayout>
                 <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding StartDate}" MinimumDate="{Binding StartDate}">

@@ -62,6 +62,10 @@ namespace course_tracker.ViewModels
                 PerformanceAssessment = assessment;
                 HasPerformanceAssessment = true;
             });
+            MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", (obj, newCourse) =>
+            {
+                Course = newCourse;
+            });
         }
 
         private static object assessmentsLock = new object();

@@ -17,6 +17,13 @@ namespace course_tracker.ViewModels
         public static SQLiteAsyncConnection SqliteConn = SqlConn.GetAsyncConnection();
 
         string title = string.Empty;
+        public string SubTitle
+        {
+            get { return subTitle; }
+            set { SetProperty(ref subTitle, value); }
+        }
+
+        string subTitle = string.Empty;
         public string Title
         {
             get { return title; }

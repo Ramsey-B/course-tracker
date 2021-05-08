@@ -18,15 +18,9 @@ namespace course_tracker.ViewModels
         public CoursesViewModel(Term term)
         { 
             Term = term;
+            SubTitle = $"{term.Start:MM/dd/yyyy} - {term.End:MM/dd/yyyy}";
+            Title = $"{term.Title}'s courses";
 
-            if (term != null)
-            {
-                Title = $"{term.Title}'s courses";
-            }
-            else
-            {
-                Title = "No Term Selected";
-            }
             Courses = new ObservableCollection<Course>();
             LoadCoursesCommand = new Command(async () => await LoadCourses());
 
