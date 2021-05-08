@@ -46,10 +46,18 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref hasPerformanceAssessment, value); }
         }
 
+        private string notes = string.Empty;
+        public string Notes
+        {
+            get { return notes; }
+            set { SetProperty(ref notes, value); }
+        }
+
         public CourseDetailsViewModel(Course course)
         {
             Course = course;
             Title = course.Title;
+            Notes = course.Notes;
             LoadAssessmentsCommand = new Command(async () => await LoadAssessments());
 
             MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddObjectiveAssessment", (obj, assessment) =>
@@ -64,6 +72,12 @@ namespace course_tracker.ViewModels
             });
             MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", (obj, newCourse) =>
             {
+                Course = newCourse;
+            });
+
+            MessagingCenter.Subscribe<NewNotesPage, Course>(this, "AddNotes", (obj, newCourse) =>
+            {
+                Notes = newCourse.Notes;
                 Course = newCourse;
             });
         }

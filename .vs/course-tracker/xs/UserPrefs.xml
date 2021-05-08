@@ -1,22 +1,25 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{8063A8E0-B68F-4F11-8FA9-E6F19A4E9B98}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="course-tracker/course-tracker/ViewModels/CourseDetailsViewModel.cs">
     <Files>
       <File FileName="course-tracker/course-tracker/Views/NewNotesPage.xaml" Line="16" Column="23" />
-      <File FileName="course-tracker/course-tracker/Views/NewNotesPage.xaml.cs" Line="21" Column="10" />
-      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml.cs" Line="23" Column="9" />
-      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml" Line="11" Column="33" />
-      <File FileName="course-tracker/course-tracker/ViewModels/NewCourseViewModel.cs" Line="48" Column="16" />
-      <File FileName="course-tracker/course-tracker/Views/NewAssessmentPage.xaml" Line="10" Column="30" />
+      <File FileName="course-tracker/course-tracker/Views/NewNotesPage.xaml.cs" />
+      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml.cs" />
+      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml" />
+      <File FileName="course-tracker/course-tracker/ViewModels/NewCourseViewModel.cs" />
+      <File FileName="course-tracker/course-tracker/Views/NewAssessmentPage.xaml" />
       <File FileName="course-tracker/course-tracker/Views/CourseDetailsPage.xaml" Line="100" Column="1" />
+      <File FileName="course-tracker/course-tracker/ViewModels/CourseDetailsViewModel.cs" Line="17" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="course-tracker" expanded="True">
             <Node name="course-tracker" expanded="True">
-              <Node name="ViewModels" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="CourseDetailsViewModel.cs" selected="True" />
+              </Node>
               <Node name="Views" expanded="True">
-                <Node name="CourseDetailsPage.xaml" expanded="True" selected="True" />
+                <Node name="CourseDetailsPage.xaml" expanded="True" />
                 <Node name="NewAssessmentPage.xaml" expanded="True" />
                 <Node name="NewNotesPage.xaml" expanded="True" />
                 <Node name="NewTermPage.xaml" expanded="True" />

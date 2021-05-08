@@ -22,7 +22,7 @@ namespace course_tracker.Views
             var success = await viewModel.SaveCourse();
             if (success)
             {
-                MessagingCenter.Send(this, "AddCourse", viewModel.NewCourse);
+                MessagingCenter.Send(this, "AddNotes", viewModel.NewCourse);
                 await Navigation.PopModalAsync();
             }
         }

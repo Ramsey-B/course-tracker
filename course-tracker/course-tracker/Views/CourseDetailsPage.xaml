@@ -166,7 +166,7 @@
                             <Label Grid.Column="1" Grid.Row="0" Text="Notes" FontAttributes="Bold" TextColor="White" FontSize="Large" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
                             <Button Grid.Column="2" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="Edit" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" Clicked="EditNotes_Clicked"></Button>
                         </Grid>
-                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="WordWrap" Text="{Binding Course.Notes}" BackgroundColor="White" Padding="10"></Label>
+                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="WordWrap" Text="{Binding Notes}" BackgroundColor="White" Padding="10"></Label>
                     </Grid>
                 </StackLayout>
                 <!--#endregion-->
