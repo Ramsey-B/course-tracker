@@ -3,7 +3,7 @@ using course_tracker.Views;
 using SQLite;
 using course_tracker.Models;
 using System;
-using coursetracker.SQL;
+using course_tracker.SQL;
 
 namespace course_tracker
 {

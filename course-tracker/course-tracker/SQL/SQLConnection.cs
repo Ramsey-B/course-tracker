@@ -2,7 +2,7 @@
 using System.IO;
 using SQLite;
 
-namespace coursetracker.SQL
+namespace course_tracker.SQL
 {
     public class SQLConnection
     {

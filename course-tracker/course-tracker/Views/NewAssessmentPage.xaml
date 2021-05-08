@@ -6,8 +6,8 @@
     Title="{Binding Title}">
 
     <ContentPage.Content>
-        <StackLayout Padding="15">
-            <Label Text="Title" FontSize="Medium" />
+        <StackLayout Padding="10">
+            <Label Text="Name" FontSize="Medium" />
             <Entry Text="{Binding NewAssessment.Title}" FontSize="Small" Placeholder="Assessment Title"/>
             <Label Text="Start Date" FontSize="Medium" />
             <StackLayout>

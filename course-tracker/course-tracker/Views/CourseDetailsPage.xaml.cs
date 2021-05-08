@@ -67,5 +67,10 @@ namespace course_tracker.Views
                 await viewModel.DeleteAssessment(viewModel.PerformanceAssessment);
             }
         }
+
+        async void EditNotes_Clicked(object sender, EventArgs args)
+        {
+            await Navigation.PushModalAsync(new NavigationPage(new NewNotesPage(_term, viewModel.Course)));
+        }
     }
 }

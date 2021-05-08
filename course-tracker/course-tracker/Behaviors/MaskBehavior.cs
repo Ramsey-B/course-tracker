@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace coursetracker.Behaviors
+namespace course_tracker.Behaviors
 {
     public class MaskBehavior : Behavior<Entry>
     {

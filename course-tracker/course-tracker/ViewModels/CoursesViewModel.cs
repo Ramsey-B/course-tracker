@@ -34,9 +34,9 @@ namespace course_tracker.ViewModels
                 await LoadCourses();
             });
 
-            MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", async (obj, term) =>
+            MessagingCenter.Subscribe<NewTermPage, Term>(this, "AddTerm", (obj, t) =>
             {
-                Term = term;
+                Term = t;
             });
         }
 

@@ -93,42 +93,4 @@
             </StackLayout>
         </StackLayout>
     </RefreshView>
-
-    <!--<RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCoursesCommand}">
-        <CollectionView x:Name="CoursesView" ItemsSource="{Binding Courses}" EmptyView="Term contains no courses" BackgroundColor="LightGray">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Padding="10,10,10,0" Spacing="0">
-                        <Frame OutlineColor="#2196F3" Padding="6" CornerRadius="4">
-                            <StackLayout Orientation="Horizontal">
-                                <StackLayout>
-                                    <Label Text="{Binding Title}" 
-                                            d:Text="{Binding .}"
-                                            LineBreakMode="NoWrap"
-                                            FontAttributes="Bold"
-                                            FontSize="16" />
-                                    <Label>
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <Span Text="{Binding Start, StringFormat='{0:MM/dd/yyyy}'}" />
-                                                <Span Text=" - " />
-                                                <Span Text="{Binding End, StringFormat='{0:MM/dd/yyyy}'}" />
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                                    <Button BackgroundColor="Green" TextColor="White" Text="Edit" Clicked="EditCourse_Clicked"></Button>
-                                    <Button BackgroundColor="Red" TextColor="White" Text="Delete" Clicked="DeleteCourse_Clicked"></Button>
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnCourseSelected"></TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>-->
 </ContentPage>

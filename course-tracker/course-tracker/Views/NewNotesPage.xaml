@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="course_tracker.Views.NewNotesPage"
+    Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <Label Text="Notes" FontSize="Medium" />
+            <Entry Text="{Binding NewCourse.Notes}" FontSize="Small" Placeholder="Enter notes here" />
+            <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
+            <StackLayout Orientation="Horizontal">
+                <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
+                <Button BackgroundColor="Blue" Text="Save" TextColor="White" Clicked="Save_Clicked"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

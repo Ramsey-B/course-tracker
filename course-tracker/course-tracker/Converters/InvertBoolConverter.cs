@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace coursetracker.Converters
+namespace course_tracker.Converters
 {
     public class InvertBoolConverter : IValueConverter
     {

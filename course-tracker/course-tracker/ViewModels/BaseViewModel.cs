@@ -1,6 +1,5 @@
 ﻿using course_tracker.Models;
-using course_tracker.Services;
-using coursetracker.SQL;
+using course_tracker.SQL;
 using SQLite;
 using System;
 using System.Collections.Generic;

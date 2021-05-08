@@ -8,7 +8,7 @@
              Title="{Binding Title}">
     
     <ContentPage.Content>
-        <StackLayout Padding="15">
+        <StackLayout Padding="10">
             <Label Text="Title" FontSize="Medium" />
             <Entry Text="{Binding NewTerm.Title}" d:Text="Term title" FontSize="Small" Placeholder="Term Title" />
             <Label Text="Start Date" FontSize="Medium" />

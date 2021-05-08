@@ -1,31 +1,25 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{8063A8E0-B68F-4F11-8FA9-E6F19A4E9B98}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="course-tracker/course-tracker/Views/CoursesPage.xaml" Line="8" Column="43" />
-      <File FileName="course-tracker/course-tracker/Views/CoursesPage.xaml.cs" Line="30" Column="43" />
-      <File FileName="course-tracker/course-tracker/Views/CourseDetailsPage.xaml" Line="6" Column="29" />
-      <File FileName="course-tracker/course-tracker/Views/NewAssessmentPage.xaml" Line="6" Column="29" />
-      <File FileName="course-tracker/course-tracker/Views/NewCoursePage.xaml" Line="6" Column="28" />
-      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml" Line="8" Column="37" />
-      <File FileName="course-tracker/course-tracker/Views/TermsPage.xaml" Line="8" Column="37" />
-      <File FileName="course-tracker/course-tracker/ViewModels/CoursesViewModel.cs" Line="39" Column="29" />
+      <File FileName="course-tracker/course-tracker/Views/NewNotesPage.xaml" Line="16" Column="23" />
+      <File FileName="course-tracker/course-tracker/Views/NewNotesPage.xaml.cs" Line="21" Column="10" />
+      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml.cs" Line="23" Column="9" />
+      <File FileName="course-tracker/course-tracker/Views/NewTermPage.xaml" Line="11" Column="33" />
+      <File FileName="course-tracker/course-tracker/ViewModels/NewCourseViewModel.cs" Line="48" Column="16" />
+      <File FileName="course-tracker/course-tracker/Views/NewAssessmentPage.xaml" Line="10" Column="30" />
+      <File FileName="course-tracker/course-tracker/Views/CourseDetailsPage.xaml" Line="100" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="course-tracker" expanded="True">
             <Node name="course-tracker" expanded="True">
-              <Node name="Services" expanded="True" />
-              <Node name="ViewModels" expanded="True">
-                <Node name="CoursesViewModel.cs" selected="True" />
-              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="CourseDetailsPage.xaml" expanded="True" />
-                <Node name="CoursesPage.xaml" expanded="True" />
+                <Node name="CourseDetailsPage.xaml" expanded="True" selected="True" />
                 <Node name="NewAssessmentPage.xaml" expanded="True" />
-                <Node name="NewCoursePage.xaml" expanded="True" />
+                <Node name="NewNotesPage.xaml" expanded="True" />
                 <Node name="NewTermPage.xaml" expanded="True" />
-                <Node name="TermsPage.xaml" expanded="True" />
               </Node>
               <Node name="App.xaml" expanded="True" />
             </Node>

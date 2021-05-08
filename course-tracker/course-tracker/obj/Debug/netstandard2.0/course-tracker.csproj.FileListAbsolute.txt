@@ -19,11 +19,13 @@ C:/Users/ramse/source/repos/course-tracker/course-tracker/course-tracker/obj/Deb
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/bin/Debug/netstandard2.0/course-tracker.dll
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/bin/Debug/netstandard2.0/ref/course-tracker.dll
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/bin/Debug/netstandard2.0/course-tracker.pdb
+/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/course-tracker.csprojAssemblyReference.cache
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/App.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/CourseDetailsPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/CoursesPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/NewAssessmentPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/NewCoursePage.xaml.g.cs
+/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/NewNotesPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/NewTermPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/Views/TermsPage.xaml.g.cs
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/course-tracker.AssemblyInfoInputs.cache
@@ -33,4 +35,3 @@ C:/Users/ramse/source/repos/course-tracker/course-tracker/course-tracker/obj/Deb
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/course-tracker.dll
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/ref/course-tracker.dll
 /Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/course-tracker.pdb
-/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/obj/Debug/netstandard2.0/course-tracker.csprojAssemblyReference.cache

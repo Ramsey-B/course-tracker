@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:coursetracker.Converters"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:course_tracker.Converters"
     x:Class="course_tracker.Views.CourseDetailsPage"
     Title="{Binding Title}">
 
@@ -13,7 +13,8 @@
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadAssessmentsCommand}">
         <ScrollView BackgroundColor="LightGray">
-            <StackLayout Padding="10">
+            <StackLayout Padding="10,20">
+                <!--#region Course Details-->
                 <StackLayout>
                     <Grid x:Name="MainNavBar" ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1">
                         <Grid.ColumnDefinitions>
@@ -48,7 +49,9 @@
                     </Grid>
                     <Button Text="Edit" BackgroundColor="Green" TextColor="White" Clicked="EditCourse_Clicked"></Button>
                 </StackLayout>
+                <!--#endregion-->
 
+                <!--#region Objective Assessment-->
                 <StackLayout IsVisible="{Binding HasObjectiveAssessment}">
                     <Grid ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
@@ -74,7 +77,9 @@
                         <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="DeleteObjectiveAssessment_Clicked"></Button>
                     </StackLayout>
                 </StackLayout>
+                <!--#endregion-->
 
+                <!--#region Add Objective Assessment-->
                 <StackLayout IsVisible="{Binding HasObjectiveAssessment, Converter={StaticResource InvertBoolConverter}}">
                     <Grid ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
@@ -91,7 +96,9 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
+                <!--#endregion-->
 
+                <!--#region Performance Assessment-->
                 <StackLayout IsVisible="{Binding HasPerformanceAssessment}">
                     <Grid ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
@@ -116,7 +123,9 @@
                         <Button Text="Delete" BackgroundColor="Red" TextColor="White" Clicked="DeletePerformanceAssessment_Clicked"></Button>
                     </StackLayout>
                 </StackLayout>
+                <!--#endregion-->
 
+                <!--#region Add Performance Assessment-->
                 <StackLayout IsVisible="{Binding HasPerformanceAssessment, Converter={StaticResource InvertBoolConverter}}">
                     <Grid ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1" Margin="0,20,0,0">
                         <Grid.ColumnDefinitions>
@@ -133,6 +142,34 @@
                         </StackLayout>
                     </Grid>
                 </StackLayout>
+                <!--#endregion-->
+
+                <!--#region Notes-->
+                <StackLayout Margin="0,20,0,0">
+                    <Grid ColumnSpacing="1" RowSpacing="1" BackgroundColor="Black" Padding="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0" Grid.Row="0" BackgroundColor="#2196F3">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Column="1" Grid.Row="0" Text="Notes" FontAttributes="Bold" TextColor="White" FontSize="Large" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
+                            <Button Grid.Column="2" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="Edit" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" Clicked="EditNotes_Clicked"></Button>
+                        </Grid>
+                        <Label Grid.Column="0" Grid.Row="1" LineBreakMode="WordWrap" Text="{Binding Course.Notes}" BackgroundColor="White" Padding="10"></Label>
+                    </Grid>
+                </StackLayout>
+                <!--#endregion-->
             </StackLayout>
         </ScrollView>
     </RefreshView>
