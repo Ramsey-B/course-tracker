@@ -4,6 +4,7 @@ using SQLite;
 using course_tracker.Models;
 using System;
 using course_tracker.SQL;
+using Plugin.LocalNotifications;
 
 namespace course_tracker
 {
@@ -27,6 +28,8 @@ namespace course_tracker
             sqlConn.CreateTableAsync<Course>().Wait();
             sqlConn.CreateTableAsync<Assessment>().Wait();
             CreateDummyData();
+
+            SetNotifications();
         }
 
         protected override void OnSleep()
@@ -37,10 +40,40 @@ namespace course_tracker
         {
         }
 
+        private void SetNotifications()
+        {
+            var courses = sqlConn.Table<Course>().Where(c => c.NotificationsEnabled).ToListAsync().Result;
+            var assessments = sqlConn.Table<Assessment>().Where(a => a.NotificationsEnabled).ToListAsync().Result;
+
+            foreach (var course in courses)
+            {
+                if (course.Start == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Reminder", $"Course '{course.Title}' begins today!", course.Id);
+                }
+                if (course.End == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Reminder", $"Course '{course.Title}' ends today!", course.Id);
+                }
+            }
+
+            foreach (var assessment in assessments)
+            {
+                if (assessment.Start == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Reminder", $"Assessment '{assessment.Title}' begins today!", assessment.Id);
+                }
+                if (assessment.End == DateTime.Today)
+                {
+                    CrossLocalNotifications.Current.Show("Reminder", $"Assessment '{assessment.Title}' ends today!", assessment.Id);
+                }
+            }
+        }
+
         private void CreateDummyData()
         {
             var termCount = sqlConn.Table<Term>().CountAsync().Result;
-            var today = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            var today = DateTime.Today;
 
             if (termCount == 0)
             {
@@ -60,7 +93,7 @@ namespace course_tracker
                     InstructorName = "James Bond",
                     InstructorPhone = "(555) 867-5309",
                     InstructorEmail = "james.bond@email.com",
-                    NotificationEnabled = true,
+                    NotificationsEnabled = true,
                     Notes = "This is a dummy course"
                 };
 
@@ -70,7 +103,7 @@ namespace course_tracker
                     Start = today.AddDays(15),
                     End = today.AddDays(20),
                     Type = AssessmentType.Objective,
-                    NotificationEnabled = false
+                    NotificationsEnabled = false
                 };
 
                 var performanceAssessment = new Assessment
@@ -79,7 +112,7 @@ namespace course_tracker
                     Start = today.AddDays(21),
                     End = today.AddDays(25),
                     Type = AssessmentType.Performance,
-                    NotificationEnabled = true
+                    NotificationsEnabled = true
                 };
 
                 var termId = sqlConn.InsertAsync(term).Result;
@@ -90,7 +123,7 @@ namespace course_tracker
                 objectiveAssessment.CourseId = courseId;
                 performanceAssessment.CourseId = courseId;
                 sqlConn.InsertAsync(objectiveAssessment).Wait();
-                //sqlConn.InsertAsync(performanceAssessment).Wait();
+                sqlConn.InsertAsync(performanceAssessment).Wait();
             }
         }
     }

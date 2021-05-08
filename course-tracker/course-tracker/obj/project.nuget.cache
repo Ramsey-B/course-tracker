@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ql2xsozaztYYIbe/oqudZprrfxIREywZUQ7KoPTqBaj7jKeh0dVLn1Ivge29WLtUZWqHzrwzt9d4Do6trCeY4w==",
+  "dgSpecHash": "4vO8G5Ilos0KutODnbgKCDHXC+G9C60p3INKf+h+0ktTMKe/qUeueBx0rRoY4itALJqPrlzY+DbJEqANSOReCQ==",
   "success": true,
   "projectFilePath": "/Users/ramseybland/Projects/course-tracker/course-tracker/course-tracker/course-tracker.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "/Users/ramseybland/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/ramseybland/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
     "/Users/ramseybland/.nuget/packages/system.runtime.compilerservices.unsafe/4.5.2/system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "/Users/ramseybland/.nuget/packages/xam.plugins.notifier/3.0.1/xam.plugins.notifier.3.0.1.nupkg.sha512",
     "/Users/ramseybland/.nuget/packages/xamarin.essentials/1.3.1/xamarin.essentials.1.3.1.nupkg.sha512",
     "/Users/ramseybland/.nuget/packages/xamarin.forms/4.4.0.991864/xamarin.forms.4.4.0.991864.nupkg.sha512"
   ],

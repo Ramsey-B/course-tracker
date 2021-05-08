@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using course_tracker.Models;
 using course_tracker.ViewModels;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace course_tracker.Views
@@ -71,6 +72,42 @@ namespace course_tracker.Views
         async void EditNotes_Clicked(object sender, EventArgs args)
         {
             await Navigation.PushModalAsync(new NavigationPage(new NewNotesPage(_term, viewModel.Course)));
+        }
+
+        async void ShareNotes_Clicked(object sender, EventArgs args)
+        {
+            await Share.RequestAsync(new ShareTextRequest
+            {
+                Title = $"Share notes for course '{viewModel.Course.Title}'",
+                Text = viewModel.Notes
+            });
+        }
+
+        async void CourseNotifications_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (viewModel.Course.NotificationsEnabled != e.Value)
+            {
+                viewModel.Course.NotificationsEnabled = e.Value;
+                await viewModel.UpdateCourseNotifications();
+            }
+        }
+
+        async void ObjectiveAssessmentNotifications_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (viewModel.ObjectiveAssessment.NotificationsEnabled != e.Value)
+            {
+                viewModel.ObjectiveAssessment.NotificationsEnabled = e.Value;
+                await viewModel.UpdateAssessmentNotifications(viewModel.ObjectiveAssessment);
+            }
+        }
+
+        async void PerformanceAssessmentNotifications_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (viewModel.PerformanceAssessment.NotificationsEnabled != e.Value)
+            {
+                viewModel.PerformanceAssessment.NotificationsEnabled = e.Value;
+                await viewModel.UpdateAssessmentNotifications(viewModel.PerformanceAssessment);
+            }
         }
     }
 }

@@ -30,6 +30,7 @@
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Course.Title}" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#2196F3"></Label>
                         <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
@@ -46,6 +47,10 @@
                         <Label Grid.Column="1" Grid.Row="6" Text="{Binding Course.InstructorPhone}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
                         <Label Grid.Column="0" Grid.Row="7" FontAttributes="Bold" Text="Instructor's Email" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
                         <Label Grid.Column="1" Grid.Row="7" Text="{Binding Course.InstructorEmail}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                        <Label Grid.Column="0" Grid.Row="8" FontAttributes="Bold" Text="Notifications" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                        <StackLayout Grid.Column="1" Grid.Row="8" BackgroundColor="LightGray">
+                            <Switch HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsToggled="{Binding Course.NotificationsEnabled}" Toggled="CourseNotifications_Toggled"></Switch>
+                        </StackLayout>
                     </Grid>
                     <Button Text="Edit" BackgroundColor="Green" TextColor="White" Clicked="EditCourse_Clicked"></Button>
                 </StackLayout>
@@ -63,6 +68,7 @@
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
                         <Label Grid.Column="0" FontAttributes="Bold" Grid.Row="0" Grid.ColumnSpan="2" Text="Objective Assessment" TextColor="White" FontSize="Large" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#2196F3"></Label>
                         <Label Grid.Column="0" Grid.Row="1" FontAttributes="Bold" Text="Assessment Name" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
@@ -71,6 +77,10 @@
                         <Label Grid.Column="1" Grid.Row="2" Text="{Binding ObjectiveAssessment.Start, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
                         <Label Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="End Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
                         <Label Grid.Column="1" Grid.Row="3" Text="{Binding ObjectiveAssessment.End, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                        <Label Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="Notifications" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                        <StackLayout Grid.Column="1" Grid.Row="4" BackgroundColor="LightGray">
+                            <Switch HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsToggled="{Binding ObjectiveAssessment.NotificationsEnabled}" Toggled="ObjectiveAssessmentNotifications_Toggled"></Switch>
+                        </StackLayout>
                     </Grid>
                     <StackLayout Orientation="Horizontal">
                         <Button Text="Edit" BackgroundColor="Green" TextColor="White" Clicked="EditObjectiveAssessment_Clicked"></Button>
@@ -117,6 +127,10 @@
                         <Label Grid.Column="1" Grid.Row="2" Text="{Binding PerformanceAssessment.Start, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
                         <Label Grid.Column="0" Grid.Row="3" FontAttributes="Bold" Text="End Date" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
                         <Label Grid.Column="1" Grid.Row="3" Text="{Binding PerformanceAssessment.End, StringFormat='{0:MM/dd/yyyy}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="White"></Label>
+                        <Label Grid.Column="0" Grid.Row="4" FontAttributes="Bold" Text="Notifications" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="LightGray"></Label>
+                        <StackLayout Grid.Column="1" Grid.Row="4" BackgroundColor="LightGray">
+                            <Switch HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" IsToggled="{Binding PerformanceAssessment.NotificationsEnabled}" Toggled="PerformanceAssessmentNotifications_Toggled"></Switch>
+                        </StackLayout>
                     </Grid>
                     <StackLayout Orientation="Horizontal">
                         <Button Text="Edit" BackgroundColor="Green" TextColor="White" Clicked="EditPerformanceAssessment_Clicked"></Button>
@@ -168,6 +182,7 @@
                         </Grid>
                         <Label Grid.Column="0" Grid.Row="1" LineBreakMode="WordWrap" Text="{Binding Notes}" BackgroundColor="White" Padding="10"></Label>
                     </Grid>
+                    <Button BackgroundColor="Blue" Text="Share" TextColor="White" HorizontalOptions="StartAndExpand" Clicked="ShareNotes_Clicked"></Button>
                 </StackLayout>
                 <!--#endregion-->
             </StackLayout>

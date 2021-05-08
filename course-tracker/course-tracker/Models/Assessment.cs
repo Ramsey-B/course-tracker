@@ -18,7 +18,7 @@ namespace course_tracker.Models
         public DateTime End { get; set; }
         [NotNull]
         public AssessmentType Type { get; set; }
-        public bool NotificationEnabled { get; set; }
+        public bool NotificationsEnabled { get; set; }
     }
 
     public enum AssessmentType

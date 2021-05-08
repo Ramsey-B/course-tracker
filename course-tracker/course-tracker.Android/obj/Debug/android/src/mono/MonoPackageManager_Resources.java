@@ -5,6 +5,8 @@ public class MonoPackageManager_Resources {
 		"course-tracker.Android.dll",
 		"course-tracker.dll",
 		"FormsViewGroup.dll",
+		"Plugin.LocalNotifications.Abstractions.dll",
+		"Plugin.LocalNotifications.dll",
 		"SQLite-net.dll",
 		"SQLitePCLRaw.batteries_v2.dll",
 		"SQLitePCLRaw.core.dll",

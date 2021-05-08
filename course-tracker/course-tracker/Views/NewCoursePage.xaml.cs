@@ -38,5 +38,9 @@ namespace course_tracker.Views
         {
             await Navigation.PopModalAsync();
         }
+
+        void Switch_Toggled(System.Object sender, Xamarin.Forms.ToggledEventArgs e)
+        {
+        }
     }
 }

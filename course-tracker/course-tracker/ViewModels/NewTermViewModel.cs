@@ -63,7 +63,7 @@ namespace course_tracker.ViewModels
         {
             NewTerm.Start = StartDate;
             NewTerm.End = EndDate;
-            if (await ValidateTerm())
+            if (ValidateTerm())
             {
                 if (isUpdate)
                 {
@@ -78,21 +78,13 @@ namespace course_tracker.ViewModels
             return false;
         }
 
-        private async Task<bool> ValidateTerm()
+        private bool ValidateTerm()
         {
             ErrorText = "";
 
             if (NewTerm.End <= NewTerm.Start) ErrorText = $"* Term end date must be after start date.";
 
             if (NewTerm.Title.IsNull()) ErrorText = $"* Term must have a Title.";
-
-            var existingTerm = await SqliteConn.Table<Term>()
-                .FirstOrDefaultAsync(t =>
-                    (NewTerm.Id != t.Id) && // is not the term being updated
-                    ((NewTerm.Start >= t.Start && NewTerm.Start < t.End) || // new Term Start is not between start and end dates of existing term
-                    (NewTerm.End > t.Start && NewTerm.End <= t.End))); // new Term end is not after another term starts and before the term ends
-
-            if (existingTerm != null) ErrorText = $"A term already exists between {existingTerm.Start:MM/dd/yyyy} and {existingTerm.End:MM/dd/yyyy}.";
 
             return ErrorText.IsNull();
         }

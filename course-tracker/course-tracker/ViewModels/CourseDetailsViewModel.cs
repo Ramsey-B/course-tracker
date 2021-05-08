@@ -74,7 +74,6 @@ namespace course_tracker.ViewModels
             {
                 Course = newCourse;
             });
-
             MessagingCenter.Subscribe<NewNotesPage, Course>(this, "AddNotes", (obj, newCourse) =>
             {
                 Notes = newCourse.Notes;
@@ -83,7 +82,7 @@ namespace course_tracker.ViewModels
         }
 
         private static object assessmentsLock = new object();
-        private async Task LoadAssessments()
+        private async Task LoadAssessments() 
         {
             IsBusy = true;
             HasObjectiveAssessment = false;
@@ -123,6 +122,16 @@ namespace course_tracker.ViewModels
         {
             await SqliteConn.DeleteAsync(assessment);
             await LoadAssessments();
+        }
+
+        public async Task UpdateCourseNotifications()
+        {
+            await SqliteConn.UpdateAsync(Course);
+        }
+
+        public async Task UpdateAssessmentNotifications(Assessment assessment)
+        {
+            await SqliteConn.UpdateAsync(assessment);
         }
     }
 }

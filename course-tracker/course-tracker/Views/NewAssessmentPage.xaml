@@ -21,6 +21,8 @@
                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
                 </DatePicker>
             </StackLayout>
+            <Label Text="Notifications" FontSize="Medium" />
+            <Switch IsToggled="{Binding NewAssessment.NotificationsEnabled}" HorizontalOptions="Start"></Switch>
             <Label TextColor="Red" Text="{Binding ErrorText}"></Label>
             <StackLayout Orientation="Horizontal">
                 <Button BackgroundColor="Red" Text="Cancel" TextColor="White" Clicked="Cancel_Clicked"></Button>
