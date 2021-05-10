@@ -35,19 +35,16 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref endDate, value); }
         }
 
-        DateTime maxDate;
-        public DateTime MaxDate
+        Course _course;
+        public Course Course
         {
-            get { return maxDate; }
-            set { SetProperty(ref maxDate, value); }
+            get { return _course; }
+            set { SetProperty(ref _course, value); }
         }
-
-        public readonly Course Course;
         private readonly bool isUpdate = false;
 
         public NewAssessmentViewModel(Course course, AssessmentType type, Assessment assessment = null)
         {
-            MaxDate = course.End;
             if (assessment == null)
             {
                 StartDate = course.Start;
@@ -55,12 +52,13 @@ namespace course_tracker.ViewModels
                 Title = type == AssessmentType.Objective ? "New Objective Assessment" : "New Performance Assessment";
                 NewAssessment = new Assessment()
                 {
-                    Title = ""
+                    Title = "",
+                    CourseId = course.Id
                 };
             }
             else
             {
-                Title = $"Update {assessment.Title}";
+                Title = $"Edit {assessment.Title}";
                 StartDate = assessment.Start;
                 EndDate = assessment.End;
                 NewAssessment = assessment;

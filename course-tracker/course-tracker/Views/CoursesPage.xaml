@@ -2,10 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:course_tracker.Converters"
              mc:Ignorable="d"
              Title="{Binding Title}"
              x:Class="course_tracker.Views.CoursesPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:InvertBoolConverter x:Key="InvertBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadCoursesCommand}">
         <StackLayout Padding="10,20" Spacing="20">
@@ -50,7 +56,8 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
                         <Label Grid.Column="1" Grid.Row="0" Text="Courses" FontAttributes="Bold" TextColor="White" FontSize="Large" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"></Label>
-                        <Button Grid.Column="2" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="Add" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" Clicked="AddCourse_Clicked"></Button>
+                        <Button Grid.Column="2" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="Add" BackgroundColor="Transparent" TextColor="White" VerticalOptions="Center" Clicked="AddCourse_Clicked" IsVisible="{Binding CanAddCourse}"></Button>
+                        <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="EndAndExpand" Text="6/6" TextColor="White" VerticalOptions="Center" IsVisible="{Binding CanAddCourse, Converter={StaticResource InvertBoolConverter}}" Padding="12,0" FontAttributes="Bold"></Label>
                     </Grid>
                     <ScrollView Grid.Column="0" Grid.Row="1">
                         <CollectionView x:Name="CoursesView" ItemsSource="{Binding Courses}" EmptyView="Term contains no courses" BackgroundColor="LightGray">

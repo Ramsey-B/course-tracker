@@ -11,13 +11,13 @@
             <Entry Text="{Binding NewAssessment.Title}" FontSize="Small" Placeholder="Assessment Title"/>
             <Label Text="Start Date" FontSize="Medium" />
             <StackLayout>
-                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding StartDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding EndDate}">
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding StartDate}" MinimumDate="{Binding Course.Start}" MaximumDate="{Binding Course.End}">
                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
                 </DatePicker>
             </StackLayout>
             <Label Text="End Date" FontSize="Medium" />
             <StackLayout>
-                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding EndDate}">
+                <DatePicker VerticalOptions="CenterAndExpand" Date="{Binding EndDate}" MinimumDate="{Binding StartDate}" MaximumDate="{Binding Course.End}">
                     <DatePicker.Format>MM/dd/yyyy</DatePicker.Format>
                 </DatePicker>
             </StackLayout>

@@ -21,6 +21,9 @@ namespace course_tracker
 
         protected override void OnStart()
         {
+            sqlConn.DropTableAsync<Term>().Wait();
+            sqlConn.DropTableAsync<Course>().Wait();
+            sqlConn.DropTableAsync<Assessment>().Wait();
             sqlConn.CreateTableAsync<Term>().Wait();
             sqlConn.CreateTableAsync<Course>().Wait();
             sqlConn.CreateTableAsync<Assessment>().Wait();
@@ -84,7 +87,7 @@ namespace course_tracker
                 var course = new Course
                 {
                     Title = "Dummy Course",
-                    Start = today.AddDays(10),
+                    Start = today,
                     End = today.AddDays(10).AddMonths(1),
                     Status = "Plan to Take",
                     InstructorName = "Ramsey Bland",
@@ -97,7 +100,7 @@ namespace course_tracker
                 var objectiveAssessment = new Assessment
                 {
                     Title = "Dummy Objective Assessment",
-                    Start = today.AddDays(15),
+                    Start = today,
                     End = today.AddDays(20),
                     Type = AssessmentType.Objective,
                     NotificationsEnabled = false

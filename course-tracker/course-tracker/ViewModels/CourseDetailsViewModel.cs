@@ -60,15 +60,13 @@ namespace course_tracker.ViewModels
             Notes = course.Notes;
             LoadAssessmentsCommand = new Command(async () => await LoadAssessments());
 
-            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddObjectiveAssessment", (obj, assessment) =>
+            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddObjectiveAssessment", async (obj, assessment) =>
             {
-                ObjectiveAssessment = assessment;
-                HasObjectiveAssessment = true;
+                await LoadAssessments();
             });
-            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddPerformanceAssessment", (obj, assessment) =>
+            MessagingCenter.Subscribe<NewAssessmentPage, Assessment>(this, "AddPerformanceAssessment", async (obj, assessment) =>
             {
-                PerformanceAssessment = assessment;
-                HasPerformanceAssessment = true;
+                await LoadAssessments();
             });
             MessagingCenter.Subscribe<NewCoursePage, Course>(this, "AddCourse", (obj, newCourse) =>
             {

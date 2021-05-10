@@ -55,7 +55,7 @@ namespace course_tracker.ViewModels
                 EndDate = term.End;
                 isUpdate = true;
                 NewTerm = term;
-                Title = $"Update {term.Title}";
+                Title = $"Edit {term.Title}";
             }
         }
 

@@ -35,24 +35,22 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref endDate, value); }
         }
 
-        DateTime maxDate;
-        public DateTime MaxDate
+        Term _term;
+        public Term Term
         {
-            get { return maxDate; }
-            set { SetProperty(ref maxDate, value); }
+            get { return _term; }
+            set { SetProperty(ref _term, value); }
         }
 
-        public readonly Term Term;
         private readonly bool isUpdate = false;
 
         public NewCourseViewModel(Term term, Course course = null)
         {
-            MaxDate = term.End;
             Term = term;
 
             if (course != null)
             {
-                Title = $"Update {course.Title}";
+                Title = $"Edit {course.Title}";
                 StartDate = course.Start;
                 EndDate = course.End;
                 NewCourse = course;
@@ -87,6 +85,12 @@ namespace course_tracker.ViewModels
                 }
                 else
                 {
+                    var courseCount = await SqliteConn.Table<Course>().Where(c => c.TermId == Term.Id).CountAsync();
+                    if (courseCount > 5)
+                    {
+                        ErrorText = $"* Term '{Term.Title}' has already reached the maximum number of courses of 6.";
+                        return false;
+                    }
                     await SqliteConn.InsertAsync(NewCourse);
                 }
                 return true;
@@ -114,9 +118,6 @@ namespace course_tracker.ViewModels
             if (Term.Start > course.Start) ErrorText = $"* Course cannot begin before term start date of {Term.Start}.";
 
             if (Term.End < course.End) ErrorText = $"* Course cannot end after term end date of {Term.End}.";
-
-            var courseCount = await SqliteConn.Table<Course>().Where(c => c.TermId == Term.Id).CountAsync();
-            if (courseCount > 5) ErrorText = $"* Term '{Term.Title}' has already reached the maximum number of courses of 6.";
 
             return ErrorText.IsNull();
         }

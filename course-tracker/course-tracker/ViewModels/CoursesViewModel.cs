@@ -20,6 +20,13 @@ namespace course_tracker.ViewModels
             set { SetProperty(ref _term, value); }
         }
 
+        bool canAddCourse = true;
+        public bool CanAddCourse
+        {
+            get { return canAddCourse; }
+            set { SetProperty(ref canAddCourse, value); }
+        }
+
         public CoursesViewModel(Term term)
         { 
             Term = term;
@@ -52,6 +59,7 @@ namespace course_tracker.ViewModels
                 // Loading the data causes the refresh to trigger
                 lock (coursesLock)
                 {
+                    CanAddCourse = courses.Count < 6;
                     Courses.Clear();
                     foreach (var course in courses)
                     {
