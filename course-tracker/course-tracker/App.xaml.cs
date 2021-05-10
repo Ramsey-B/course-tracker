@@ -21,9 +21,6 @@ namespace course_tracker
 
         protected override void OnStart()
         {
-            sqlConn.DropTableAsync<Term>().Wait();
-            sqlConn.DropTableAsync<Course>().Wait();
-            sqlConn.DropTableAsync<Assessment>().Wait();
             sqlConn.CreateTableAsync<Term>().Wait();
             sqlConn.CreateTableAsync<Course>().Wait();
             sqlConn.CreateTableAsync<Assessment>().Wait();
@@ -90,9 +87,9 @@ namespace course_tracker
                     Start = today.AddDays(10),
                     End = today.AddDays(10).AddMonths(1),
                     Status = "Plan to Take",
-                    InstructorName = "James Bond",
-                    InstructorPhone = "(555) 867-5309",
-                    InstructorEmail = "james.bond@email.com",
+                    InstructorName = "Ramsey Bland",
+                    InstructorPhone = "(208) 488-1434",
+                    InstructorEmail = "rbland4@wgu.edu",
                     NotificationsEnabled = true,
                     Notes = "This is a dummy course"
                 };

@@ -25,7 +25,7 @@
                 <Label Text="Instructor's Name" FontSize="Medium" />
                 <Entry Text="{Binding NewCourse.InstructorName}" FontSize="Small" Placeholder="Instructor's Name"/>
                 <Label Text="Instructor's Email" FontSize="Medium" />
-                <Entry Text="{Binding NewCourse.InstructorEmail}" FontSize="Small" Placeholder="xxxxxxxx@xxxxx.com"/>
+                <Entry Text="{Binding NewCourse.InstructorEmail}" FontSize="Small" Placeholder="(e.x. john.doe@email.com)"/>
                 <Label Text="Instructor's Phone Number" FontSize="Medium" />
                 <Entry Text="{Binding NewCourse.InstructorPhone}" Keyboard="Numeric" FontSize="Small" Placeholder="(xxx) xxx-xxxx">
                     <Entry.Behaviors>
