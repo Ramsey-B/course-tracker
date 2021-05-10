@@ -21,9 +21,6 @@ namespace course_tracker
 
         protected override void OnStart()
         {
-            sqlConn.DropTableAsync<Term>().Wait();
-            sqlConn.DropTableAsync<Course>().Wait();
-            sqlConn.DropTableAsync<Assessment>().Wait();
             sqlConn.CreateTableAsync<Term>().Wait();
             sqlConn.CreateTableAsync<Course>().Wait();
             sqlConn.CreateTableAsync<Assessment>().Wait();
